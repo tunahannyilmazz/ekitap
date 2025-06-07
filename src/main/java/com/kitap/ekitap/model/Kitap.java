@@ -1,6 +1,8 @@
 package com.kitap.ekitap.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity
@@ -13,7 +15,10 @@ public class Kitap {
     private String baslik;
     private String yazar;
     private String kategori;
+
+    @JsonFormat(pattern = "yyyy-MM-dd") // 👈 Tarih formatı eklendi
     private LocalDate yayinTarihi;
+
     private boolean stoktaVarMi;
 
     public Kitap() {
@@ -26,8 +31,6 @@ public class Kitap {
         this.yayinTarihi = yayinTarihi;
         this.stoktaVarMi = stoktaVarMi;
     }
-
-    // Getter & Setter'lar
 
     public Long getId() {
         return id;
